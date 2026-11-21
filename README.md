@@ -46,4 +46,4 @@ Remove the old A/AAAA/CNAME records on `@` and `www` that point to the WordPress
 - Contact Form 7 replaced with a form that opens a pre-filled email to info@adamnormand.com. No server, no reCAPTCHA.
 - Dropped: RSS feed link (no blog), Pinterest icon (it pointed to YouTube), Twitter timeline widget, search box.
 - Fixed: envelope icon now a working `mailto:` link.
-- Footer date now shows the rebuild date.
+- Footer reads "Updated November 2026".
