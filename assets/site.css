@@ -1,0 +1,162 @@
+/* adamnormand.com — static rebuild of the HT SmartScreen WordPress theme */
+:root {
+  --panel: rgba(0, 0, 0, .7);
+  --red: #a00000;
+  --muted: #adadad;
+  --head: 'Oswald', 'Arial Narrow', sans-serif;
+  --body: 'Droid Sans', 'Noto Sans', Helvetica, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: #545454;
+  color: #fff;
+  font: 12px/1.5 var(--body);
+  overflow: hidden;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Full-screen background slides ---------- */
+.slides { position: fixed; inset: 0; z-index: 0; background: #000; }
+.slide {
+  position: absolute; inset: 0;
+  background: center / cover no-repeat;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+.slide.on { opacity: 1; }
+
+/* ---------- Left menu panel ---------- */
+.menu-wrap {
+  position: fixed; top: 0; left: 80px; z-index: 10;
+  width: 266px;
+  background: var(--panel);
+  border-radius: 0 0 25px 25px;
+  padding: 0 26px 18px;
+  transition: transform .45s ease;
+}
+.menu-wrap .logo { display: block; text-align: center; padding: 40px 0 26px; }
+.menu-wrap .logo img { width: 215px; max-width: 100%; height: auto; }
+.menu-wrap nav ul { list-style: none; margin: 0; padding: 0; }
+.menu-wrap nav li { padding: 3px 0; border-bottom: 1px solid #777; }
+.menu-wrap nav li:last-child { border-bottom: 0; }
+.menu-wrap nav a {
+  display: block; padding: 4px 0 2px;
+  font: 300 17px/1.3 var(--head); text-transform: uppercase; color: #fff;
+}
+.menu-wrap nav a span {
+  display: block; font: 11px/1.2 Helvetica, Arial, sans-serif;
+  text-transform: none; color: var(--muted);
+}
+.menu-wrap nav a:hover, .menu-wrap nav a[aria-current] { color: #fff; }
+.menu-wrap nav a:hover span { color: #fff; }
+.menu-toggle {
+  position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%);
+  width: 30px; height: 26px; border: 0; border-radius: 3px;
+  background: #fff; color: #222; cursor: pointer; font-size: 14px; line-height: 26px;
+}
+.menu-wrap.closed { transform: translateY(calc(-100% + 12px)); }
+.menu-wrap.closed .menu-toggle i { transform: rotate(180deg); }
+
+/* ---------- Social bar ---------- */
+.social { position: fixed; top: 0; right: 0; z-index: 10; display: flex; }
+.social a {
+  width: 40px; height: 38px; display: grid; place-items: center;
+  background: var(--panel); border-left: 1px solid rgba(255,255,255,.08);
+  font-size: 18px; color: #fff; transition: background .2s;
+}
+.social a:first-child { border-radius: 0 0 0 10px; }
+.social a:hover { background: var(--red); }
+
+/* ---------- Slide caption ---------- */
+.caption {
+  position: fixed; right: 10px; bottom: 49px; z-index: 5;
+  width: 450px; max-width: calc(100% - 20px);
+  background: var(--panel); border-radius: 25px 25px 0 0;
+  padding: 25px 25px 22px; transition: opacity .6s;
+}
+.caption h2 { margin: 0 0 14px; font: 400 25px/1.3 var(--head); }
+.caption .meta { font-weight: 700; line-height: 1.6; }
+.caption p { margin: 10px 0 0; color: #ddd; }
+.caption.fade { opacity: 0; }
+
+/* ---------- Footer / controls ---------- */
+.controls {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+  height: 49px; background: var(--panel);
+  display: flex; align-items: center;
+}
+.progress { position: absolute; left: 0; right: 0; top: -4px; height: 4px; background: rgba(0,0,0,.6); }
+.progress i { display: block; height: 100%; width: 0; background: var(--red); }
+.controls .eye { width: 50px; text-align: center; font-size: 16px; cursor: pointer; background: none; border: 0; color: #fff; }
+.controls .copyright { margin: 0 0 0 30px; font: 12px Verdana, sans-serif; }
+.controls .nav { margin-left: auto; padding-right: 12px; display: flex; gap: 4px; }
+.controls .nav button {
+  background: none; border: 0; color: #ccc; font-size: 13px; cursor: pointer; padding: 6px;
+}
+.controls .nav button:hover { color: #fff; }
+body.ui-hidden .menu-wrap, body.ui-hidden .caption, body.ui-hidden .social { opacity: 0; pointer-events: none; }
+.menu-wrap, .social { transition: transform .45s ease, opacity .4s; }
+
+/* ---------- Inner pages (Booking, Contact) ---------- */
+body.page { overflow: auto; }
+.page-panel {
+  position: relative; z-index: 4;
+  width: 700px; max-width: calc(100% - 20px);
+  margin: 0 auto 90px; padding: 0 30px 34px;
+  background: #fff; color: #333;
+  border-top: 3px solid var(--red); border-radius: 0 0 25px 25px;
+}
+.page-panel .head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 0 10px; border-bottom: 1px solid #ddd;
+}
+.page-panel h1 { margin: 0; font: 400 20px var(--head); color: #333; }
+.page-panel .crumbs { font-size: 10px; color: #999; margin: 6px 0 18px; }
+.page-panel .crumbs a { color: #999; }
+.page-panel h3 { font: 400 13px var(--head); text-transform: uppercase; margin: 22px 0 8px; color: #333; }
+.page-panel .hero-img { width: 100%; height: 170px; object-fit: cover; display: block; background: #222; }
+.page-panel a.inline { color: var(--red); }
+.page-panel label { display: block; margin: 12px 0 4px; font-weight: 700; color: #444; }
+.page-panel input, .page-panel select, .page-panel textarea {
+  width: 100%; padding: 7px 9px; border: 1px solid #ccc; border-radius: 3px;
+  font: 13px var(--body); color: #333; background: #fff;
+}
+.page-panel textarea { min-height: 130px; resize: vertical; }
+.page-panel .row { display: flex; gap: 14px; flex-wrap: wrap; }
+.page-panel .row > div { flex: 1 1 140px; }
+.page-panel .days { display: flex; gap: 10px; flex-wrap: wrap; }
+.page-panel .days label { display: flex; flex-direction: column; align-items: center; font-weight: 700; margin: 0; color: var(--red); }
+.page-panel .days input { width: 18px; height: 18px; accent-color: var(--red); }
+.page-panel .btn {
+  display: inline-block; margin-top: 20px; padding: 9px 26px;
+  background: var(--red); color: #fff; border: 0; border-radius: 3px;
+  font: 400 14px var(--head); text-transform: uppercase; cursor: pointer;
+}
+.page-panel .btn:hover { background: #7a0000; }
+.page-panel .note { color: #888; font-size: 11px; margin-top: 10px; }
+.page-panel .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; margin: 4px 0 18px; }
+.page-panel .steps div { font-weight: 700; font-size: 11px; border-bottom: 7px solid #ccc; padding-bottom: 4px; }
+.page-panel .steps div.on { color: var(--red); border-color: var(--red); }
+
+/* Keep the panel clear of the left menu between tablet and desktop widths */
+@media (min-width: 761px) and (max-width: 1240px) {
+  .page-panel { margin: 48px 10px 90px 366px; width: auto; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 760px) {
+  .menu-wrap { left: 10px; width: 210px; padding: 0 16px 16px; }
+  .menu-wrap .logo { padding: 24px 0 14px; }
+  .menu-wrap .logo img { width: 150px; }
+  .menu-wrap nav a { font-size: 15px; }
+  .social { top: auto; bottom: 49px; left: 0; right: 0; justify-content: center; }
+  .social a { width: 36px; height: 34px; font-size: 15px; }
+  .social a:first-child { border-radius: 0; }
+  .caption { right: 0; left: 0; width: auto; max-width: none; bottom: 83px; border-radius: 18px 18px 0 0; padding: 16px 18px; }
+  .caption h2 { font-size: 20px; margin-bottom: 8px; }
+  .caption p { display: none; }
+  .controls .copyright { margin-left: 4px; font-size: 11px; }
+  .page-panel { margin-top: 0; padding: 0 16px 26px; }
+  body.page .menu-wrap { position: relative; left: 0; width: 100%; border-radius: 0; }
+  body.page .menu-toggle { display: none; }
+}
