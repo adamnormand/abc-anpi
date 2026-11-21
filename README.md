@@ -7,7 +7,7 @@ Static rebuild of adamnormand.com (previously WordPress with the HT SmartScreen 
 | Path | Purpose |
 |---|---|
 | `index.html` | Home: full-screen photo slideshow with captions |
-| `booking/index.html` | Book Appointment: availability form that opens a pre-filled email |
+| `booking/index.html` | Redirect to Contact, so old booking links still work |
 | `contact/index.html` | Contact Me: email, phone and a message form that opens a pre-filled email |
 | `assets/site.css` | All styles |
 | `assets/site.js` | Slide list (photo, title, place, date) and slideshow controls |
@@ -42,7 +42,8 @@ Remove the old A/AAAA/CNAME records on `@` and `www` that point to the WordPress
 
 ## What changed from the WordPress site
 
-- Booking (Bookly) and contact (Contact Form 7) plugins replaced with forms that open a pre-filled email to info@adamnormand.com. No server, no reCAPTCHA.
+- Booking (Bookly) plugin removed: appointments are arranged by email or phone. `/booking/` redirects to Contact.
+- Contact Form 7 replaced with a form that opens a pre-filled email to info@adamnormand.com. No server, no reCAPTCHA.
 - Dropped: RSS feed link (no blog), Pinterest icon (it pointed to YouTube), Twitter timeline widget, search box.
 - Fixed: envelope icon now a working `mailto:` link.
 - Footer date now shows the rebuild date.

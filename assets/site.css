@@ -124,9 +124,6 @@ body.page { overflow: auto; }
 .page-panel textarea { min-height: 130px; resize: vertical; }
 .page-panel .row { display: flex; gap: 14px; flex-wrap: wrap; }
 .page-panel .row > div { flex: 1 1 140px; }
-.page-panel .days { display: flex; gap: 10px; flex-wrap: wrap; }
-.page-panel .days label { display: flex; flex-direction: column; align-items: center; font-weight: 700; margin: 0; color: var(--red); }
-.page-panel .days input { width: 18px; height: 18px; accent-color: var(--red); }
 .page-panel .btn {
   display: inline-block; margin-top: 20px; padding: 9px 26px;
   background: var(--red); color: #fff; border: 0; border-radius: 3px;
@@ -134,9 +131,6 @@ body.page { overflow: auto; }
 }
 .page-panel .btn:hover { background: #7a0000; }
 .page-panel .note { color: #888; font-size: 11px; margin-top: 10px; }
-.page-panel .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px; margin: 4px 0 18px; }
-.page-panel .steps div { font-weight: 700; font-size: 11px; border-bottom: 7px solid #ccc; padding-bottom: 4px; }
-.page-panel .steps div.on { color: var(--red); border-color: var(--red); }
 
 /* Keep the panel clear of the left menu between tablet and desktop widths */
 @media (min-width: 761px) and (max-width: 1240px) {

@@ -1,119 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" data-root="../">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Book Appointment | adamnormand.com</title>
-<meta name="description" content="Request a meeting with Adam Normand.">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:300,400,700%7CDroid+Sans&amp;display=swap">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../assets/site.css">
+<title>Contact Me | adamnormand.com</title>
+<meta http-equiv="refresh" content="0; url=../contact/">
+<link rel="canonical" href="../contact/">
+<meta name="robots" content="noindex">
 </head>
-<body class="page">
-
-<div class="slides" aria-hidden="true"></div>
-
-<header class="menu-wrap">
-  <a class="logo" href="../" aria-label="Adam Normand — home"><img src="../assets/img/an_logo_2023-f_215x116-1.png" alt="Adam Normand" width="215" height="100"></a>
-  <nav aria-label="Main">
-    <ul>
-      <li><a href="./" aria-current="page">Book Appointment<span>schedule time with me</span></a></li>
-      <li><a href="../contact/">Contact Me<span>reach out, let’s talk</span></a></li>
-    </ul>
-  </nav>
-  <button class="menu-toggle" type="button" aria-label="Collapse menu"><i class="fa fa-chevron-up"></i></button>
-</header>
-
-<nav class="social" aria-label="Social media">
-  <a href="https://twitter.com/adamnormand" aria-label="X / Twitter" rel="noopener" target="_blank"><i class="fa fa-twitter"></i></a>
-  <a href="https://www.facebook.com/adamnormand" aria-label="Facebook" rel="noopener" target="_blank"><i class="fa fa-facebook"></i></a>
-  <a href="https://ca.linkedin.com/in/adamnormand/" aria-label="LinkedIn" rel="noopener" target="_blank"><i class="fa fa-linkedin"></i></a>
-  <a href="https://www.youtube.com/user/adamnormand" aria-label="YouTube" rel="noopener" target="_blank"><i class="fa fa-youtube"></i></a>
-  <a href="https://www.instagram.com/adam.normand/" aria-label="Instagram" rel="noopener" target="_blank"><i class="fa fa-instagram"></i></a>
-  <a href="mailto:info@adamnormand.com" aria-label="Email"><i class="fa fa-envelope"></i></a>
-</nav>
-
-<main class="page-panel">
-  <div class="head"><h1>Book Appointment</h1></div>
-  <div class="crumbs"><a href="../">Home</a> » Book Appointment</div>
-
-  <div class="steps"><div class="on">1. Your availability</div><div>2. Confirmation by email</div></div>
-
-  <form id="book">
-    <label for="svc">Service</label>
-    <select id="svc" name="service" required>
-      <option value="">Select service</option>
-      <option>Meeting</option>
-    </select>
-
-    <div class="row">
-      <div><label for="date">I’m available on or after</label><input id="date" type="date" name="date" required></div>
-      <div><label for="from">Start from</label><select id="from" name="from"></select></div>
-      <div><label for="to">Finish by</label><select id="to" name="to"></select></div>
-    </div>
-
-    <label>Days</label>
-    <div class="days">
-      <label>Mon<input type="checkbox" value="Mon" checked></label>
-      <label>Tue<input type="checkbox" value="Tue" checked></label>
-      <label>Wed<input type="checkbox" value="Wed" checked></label>
-      <label>Thu<input type="checkbox" value="Thu" checked></label>
-      <label>Fri<input type="checkbox" value="Fri" checked></label>
-      <label>Sat<input type="checkbox" value="Sat" checked></label>
-      <label>Sun<input type="checkbox" value="Sun" checked></label>
-    </div>
-
-    <div class="row">
-      <div><label for="name">Your name</label><input id="name" name="name" required autocomplete="name"></div>
-      <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
-    </div>
-    <label for="notes">Topic</label>
-    <textarea id="notes" name="notes" style="min-height:80px"></textarea>
-
-    <button class="btn" type="submit">Next</button>
-    <p class="note">Opens your email app with the request addressed to info@adamnormand.com. I confirm a time by reply.</p>
-  </form>
-</main>
-
-<footer class="controls">
-  <div class="progress"><i></i></div>
-  <button class="eye" type="button" data-act="eye" aria-label="Show or hide panels"><i class="fa fa-eye"></i></button>
-  <p class="copyright">Updated 2026-11-21</p>
-  <div class="nav">
-    <button type="button" data-act="prev" aria-label="Previous photo"><i class="fa fa-backward"></i></button>
-    <button type="button" data-act="pause" aria-label="Pause"><i class="fa fa-pause"></i></button>
-    <button type="button" data-act="next" aria-label="Next photo"><i class="fa fa-forward"></i></button>
-  </div>
-</footer>
-
-<script src="../assets/site.js"></script>
-<script>
-(function () {
-  var f = document.getElementById('book');
-  var from = f.from, to = f.to;
-  for (var h = 7; h <= 22; h++) {
-    var lbl = (h % 12 || 12) + ':00 ' + (h < 12 ? 'AM' : 'PM');
-    from.add(new Option(lbl, lbl, h === 7, h === 7));
-    to.add(new Option(lbl, lbl, h === 22, h === 22));
-  }
-  f.date.value = new Date().toISOString().slice(0, 10);
-  f.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var days = [].slice.call(f.querySelectorAll('.days input:checked')).map(function (c) { return c.value; }).join(', ');
-    var body = 'Service: ' + f.service.value +
-      '\nAvailable on or after: ' + f.date.value +
-      '\nDays: ' + (days || '—') +
-      '\nBetween: ' + from.value + ' and ' + to.value +
-      '\nName: ' + f.name.value +
-      '\nPhone: ' + (f.phone.value || '—') +
-      '\n\n' + f.notes.value;
-    location.href = 'mailto:info@adamnormand.com?subject=' + encodeURIComponent('Appointment request — ' + f.name.value) +
-      '&body=' + encodeURIComponent(body);
-  });
-})();
-</script>
+<body>
+<p>This page has moved. <a href="../contact/">Contact me by email or phone</a>.</p>
 </body>
 </html>
